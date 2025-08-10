@@ -6,10 +6,13 @@ const headers = {
 };
 
 export const scryfallApi = {
-  // Search for cards
+  // Search for cards (excluding lands)
   searchCards: async (query) => {
     try {
-      const response = await fetch(`${BASE_URL}/cards/search?q=${encodeURIComponent(query)}`, {
+      // Add the land exclusion to the query
+      const modifiedQuery = `(${query}) -t:land`;
+      
+      const response = await fetch(`${BASE_URL}/cards/search?q=${encodeURIComponent(modifiedQuery)}`, {
         headers
       });
       
@@ -25,7 +28,7 @@ export const scryfallApi = {
     }
   },
 
-  // Get a random card
+  // Get a random card (excluding lands)
   getRandomCard: async () => {
     try {
       const response = await fetch(`${BASE_URL}/cards/random`, { headers });
@@ -34,14 +37,21 @@ export const scryfallApi = {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      return await response.json();
+      const card = await response.json();
+      
+      // Check if it's a land and get another if it is
+      if (card.type_line && card.type_line.toLowerCase().includes('land')) {
+        return await scryfallApi.getRandomCard(); // Recursively get another
+      }
+      
+      return card;
     } catch (error) {
       console.error('Error fetching random card:', error);
       throw error;
     }
   },
 
-  // Get card by exact name
+  // Get card by exact name (keep original)
   getCardByName: async (name) => {
     try {
       const response = await fetch(`${BASE_URL}/cards/named?fuzzy=${encodeURIComponent(name)}`, {
@@ -59,7 +69,7 @@ export const scryfallApi = {
     }
   },
 
-    // Get cards by year range
+  // Get cards by year range (excluding lands)
   getCardsByYear: async (yearFilter) => {
     try {
       let query = '';
@@ -80,17 +90,20 @@ export const scryfallApi = {
             query = 'year>=1993 year<=1999';
             break;
           default:
-            query = 'year>=1993'; // All cards
+            query = 'year>=1993';
         }
       } else if (yearFilter !== 'all') {
         // Handle specific year
         query = `year:${yearFilter}`;
       } else {
-        // Get random sampling of cards from different eras
+        // Get sample of all cards
         query = 'is:booster';
       }
 
-      const response = await fetch(`${BASE_URL}/cards/search?q=${encodeURIComponent(query)}&order=released&unique=prints`, {
+      // Add land exclusion
+      const modifiedQuery = `(${query}) -t:land`;
+
+      const response = await fetch(`${BASE_URL}/cards/search?q=${encodeURIComponent(modifiedQuery)}&order=released&unique=prints`, {
         headers
       });
       

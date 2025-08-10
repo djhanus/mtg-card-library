@@ -2,6 +2,7 @@ import React from 'react';
 import CardSearch from './components/CardSearch';
 import CardDisplay from './components/CardDisplay';
 import DateFilter from './components/DateFilter';
+import Credits from './components/Credits'; // Add this import
 import { useCards } from './hooks/useCards';
 import './App.css';
 
@@ -20,8 +21,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>MTG Card Library</h1>
-        <p>Search Magic: The Gathering cards or browse by era</p>
+        <h1>Magic the Gathering</h1>
+        <h2>A library of cards</h2>
       </header>
       
       <main>
@@ -65,6 +66,10 @@ function App() {
           <p>Pick an era above, search for specific cards, or get a random card to get started!</p>
         )}
       </main>
+
+      <footer>
+        <Credits /> {/* Add this */}
+      </footer>
     </div>
   );
 }

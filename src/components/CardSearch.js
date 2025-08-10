@@ -10,6 +10,7 @@ const CardSearch = ({ onSearch, onRandomCard, loading }) => {
 
   return (
     <div className="card-search">
+      <h4>Browse Cards by Era</h4>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
