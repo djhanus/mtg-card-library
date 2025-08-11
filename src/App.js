@@ -27,17 +27,20 @@ function App() {
       </header>
       
       <main>
-        <DateFilter 
-          onDateFilter={loadCardsByDate}
-          loading={loading}
-          currentFilter={currentFilter}
-        />
 
         <CardSearch 
           onSearch={searchCards}
           onRandomCard={getRandomCard}
           loading={loading}
         />
+
+        <DateFilter 
+          onDateFilter={loadCardsByDate}
+          loading={loading}
+          currentFilter={currentFilter}
+        />
+
+
         
         {error && (
           <div className="error">
