@@ -21,8 +21,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Magic the Gathering</h1>
-        <h2>A library of cards</h2>
+        <h1>Magic Wizard Cards</h1>
+        <h2>A Searchable Index</h2>
+        <a href="https://magic-wizards.vercel.app" target="_blank" rel="noopener noreferrer">https://magic-wizards.vercel.app/</a>
       </header>
       
       <main>
@@ -63,7 +64,7 @@ function App() {
         </div>
         
         {cards.length === 0 && !loading && !error && (
-          <p>Pick an era above, search for specific cards, or get a random card to get started!</p>
+          <p class="welcome">Pick an era above, search for specific cards, or get a random card to get started!</p>
         )}
       </main>
 

@@ -42,9 +42,11 @@ const DateFilter = ({ onDateFilter, loading, currentFilter }) => {
         ))}
       </div>
 
+      <h4>OR</h4>
+
       {/* Specific Year Dropdown */}
       <div className="filter-section">
-        <label htmlFor="specific-year">Or pick a specific year: </label>
+        {/* <label htmlFor="specific-year">Or pick a specific year: </label> */}
         <select 
           id="specific-year"
           value={selectedYear}

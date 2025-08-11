@@ -10,7 +10,14 @@
 }
 
 .App-header {
-  margin-bottom: 30px;
+  margin-bottom: 3.5rem;
+}
+
+.App-header {
+  a {
+    color: #e52b2d;
+    font-size: 0.8rem;
+  }
 }
 
 html {
@@ -69,7 +76,7 @@ html {
 .card-item {
   border: 1px solid #e52b2d;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 1rem 0.75rem 1.5rem;
   background-color: #641e1e;
 }
 
@@ -130,7 +137,7 @@ html {
 .filter-section select {
   padding: 5px 10px;
   font-size: 14px;
-  border: 1px solid #e52b2d;
+  border: 1px solid #f0f0f0;
   border-radius: 4px;
   min-width: 150px;
 }
@@ -142,12 +149,13 @@ html {
   margin-top: 15px;
   text-align: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 .era-buttons button {
   padding: 8px 12px;
   font-size: 14px;
   background-color: #f0f0f0;
-  border: 1px solid #e52b2d;
+  border: 2px solid #f0f0f0;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -155,7 +163,7 @@ html {
 .era-buttons button.active {
   background-color: limegreen;
   color: white;
-  border-color: white;
+  border-color: #f0f0f0;
 }
 .era-buttons button:hover {
   background-color: #e0e0e0;
@@ -164,8 +172,6 @@ html {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-
 
 .current-filter {
   margin-top: 15px;
@@ -199,6 +205,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 2.5rem;
+    color: #ffd700; /* Gold color for card names */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+h2 {
+  color: #c0c0c0; /* Silver color for subtitles */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .card-item h3 {
