@@ -12,14 +12,3 @@ code {
     monospace;
 }
 
-.era-buttons button.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-.era-buttons button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
